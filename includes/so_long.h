@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/03 11:57:20 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:06:59 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "../my_libft/libft.h"
 
-# define EXTENSION_WRONG "map extension is wrong. correct map extension is .ber"
+# define EXTENSION_ERROR "map extension is wrong. correct map extension is .ber"
+# define MAP_ERROR "couldn't open map"
 
 /*=============================================================================#
 #                               GENERAL                                        #
