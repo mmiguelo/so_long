@@ -6,7 +6,7 @@
 #    By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:51:22 by mmiguelo          #+#    #+#              #
-#    Updated: 2025/01/03 11:05:35 by mmiguelo         ###   ########.fr        #
+#    Updated: 2025/01/03 11:54:49 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INC = -I./includes
 LIBFT = ./my_libft/libft.a
 RM = rm -rf
 
-SRC = main
+GENERAL = main kill
 PARSING = extension
 
 NAME = so_long
@@ -29,13 +29,14 @@ NAME = so_long
 #                                    PATHS                                     #
 #==============================================================================#
 
-VPATH = src/parsing
+VPATH += src
+VPATH += src/parsing
 
 #==============================================================================#
 #                                    FILES                                     #
 #==============================================================================#
 
-SRC +=	$(addsuffix .c, $(SRC))
+SRC +=	$(addsuffix .c, $(GENERAL))
 SRC +=	$(addsuffix .c, $(PARSING))
 
 OBJ_DIR = obj

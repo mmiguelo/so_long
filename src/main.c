@@ -1,10 +1,24 @@
-int main(int argc, char** argv)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/03 11:30:19 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/01/03 11:55:29 by mmiguelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+int	main(int argc, char **argv)
 {
-	int	fd
+	//int	fd;
 
 	if (argc == 2)
 	{
-		extansion(argv[1])
-		
+		extension(argv[1]);
 	}
+	return (0);
 }

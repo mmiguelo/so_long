@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extension.c                                        :+:      :+:    :+:   */
+/*   kill.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 11:22:56 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/03 11:55:47 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/01/03 11:31:01 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/01/03 11:44:56 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void extension(char *file)
+void	kill(int number)
 {
-	if (ft_strcmp((file + (ft_strlen(file) - 4)), ".ber") != 0)
-		kill (1);
+	ft_printf("Error\n");
+	if (number == 1)
+		ft_printf("%s\n", EXTENSION_WRONG);
+	exit(1);
 }
