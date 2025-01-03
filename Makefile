@@ -6,7 +6,7 @@
 #    By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:51:22 by mmiguelo          #+#    #+#              #
-#    Updated: 2024/12/30 16:52:58 by mmiguelo         ###   ########.fr        #
+#    Updated: 2025/01/03 11:05:35 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,27 +15,31 @@
 #==============================================================================#
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 INC = -I./includes
-VPATH = utils commands
 LIBFT = ./my_libft/libft.a
 RM = rm -rf
 
-COMMANDS =
-UTILS = 
+SRC = main
+PARSING = extension
 
 NAME = so_long
+
+#==============================================================================#
+#                                    PATHS                                     #
+#==============================================================================#
+
+VPATH = src/parsing
 
 #==============================================================================#
 #                                    FILES                                     #
 #==============================================================================#
 
-SRCS =	$(addsuffix .c, $(COMMANDS))
-SRCS +=	$(addsuffix .c, $(UTILS))
-SRCS +=	main.c
-	   
+SRC +=	$(addsuffix .c, $(SRC))
+SRC +=	$(addsuffix .c, $(PARSING))
+
 OBJ_DIR = obj
-OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 #==============================================================================#
 #                                    RULES                                     #

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/03 11:11:37 by mmiguelo         ###   ########.fr       */
+/*   Created: 2024/11/07 13:54:29 by mmiguelo          #+#    #+#             */
+/*   Updated: 2024/11/12 17:11:08 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "ft_printf.h"
 
-# include "../my_libft/libft.h"
+int	ft_putnbr(int n)
+{
+	int		length;
+	char	*num;
 
-/*=============================================================================#
-#                               CHECKERS                                       #
-#=============================================================================*/
-
-void	extension(char *file);
-
-#endif
+	length = 0;
+	num = ft_itoa(n);
+	length = ft_putstr(num);
+	free(num);
+	return (length);
+}

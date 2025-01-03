@@ -1,24 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/03 11:11:37 by mmiguelo         ###   ########.fr       */
+/*   Created: 2024/11/07 13:49:09 by mmiguelo          #+#    #+#             */
+/*   Updated: 2024/11/12 17:06:21 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "ft_printf.h"
 
-# include "../my_libft/libft.h"
+void	ft_printstr( char *str)
+{
+	int	i;
 
-/*=============================================================================#
-#                               CHECKERS                                       #
-#=============================================================================*/
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
 
-void	extension(char *file);
+int	ft_putstr(char *str)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (str == NULL)
+	{
+		ft_printstr("(null)");
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}
