@@ -1,19 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extension.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 11:22:56 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/03 12:53:50 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/01/03 13:00:50 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/01/03 13:48:30 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+# include "so_long.h"
 
-void	check_extension(char *file)
+int count_lines(char *file)
 {
-	if (ft_strcmp((file + (ft_strlen(file) - 4)), ".ber") != 0)
-		kill (1);
+	int lines;
+	int fd;
+	char *temp;
+
+	lines = 0;
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		ft_kill (2);
+	temp = get_next_line(fd);	
+	while (temp)
+	{
+		lines++;
+		free(temp);
+		temp = get_next_line(fd);
+	}
+	close(fd);
+	return(lines);
+}
+
+void	read_map(char **argv, t_map game)
+{
+	int fd;
 }

@@ -6,7 +6,7 @@
 #    By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:51:22 by mmiguelo          #+#    #+#              #
-#    Updated: 2025/01/03 11:54:49 by mmiguelo         ###   ########.fr        #
+#    Updated: 2025/01/03 13:45:16 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INC = -I./includes
 LIBFT = ./my_libft/libft.a
 RM = rm -rf
 
-GENERAL = main kill
+GENERAL = main ft_kill
 PARSING = extension
 
 NAME = so_long

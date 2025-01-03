@@ -6,13 +6,13 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:31:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/03 12:07:15 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/03 13:42:35 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	kill(int number)
+void	ft_kill(int number)
 {
 	ft_printf("Error\n");
 	if (number == 1)
