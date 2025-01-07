@@ -6,9 +6,10 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/03 16:37:20 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:38:28 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -17,6 +18,8 @@
 
 # define EXTENSION_ERROR "map extension is wrong. correct map extension is .ber"
 # define MAP_ERROR "couldn't open map"
+# define SIZE_ERROR "size of the map is wrong"
+
 
 typedef struct s_player
 {
@@ -26,7 +29,7 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	int			width;
+	size_t			width;
 	int			height;
 	int			collectibles;
 	int			exit;
@@ -41,11 +44,14 @@ typedef struct s_map
 
 void	ft_kill(int number);
 void	read_map(char *argv, t_map *game);
+void	initialize_game(t_map *game);
+void	copy_map(int fd, t_map *game);
 
 /*=============================================================================#
 #                               CHECKERS                                       #
 #=============================================================================*/
 
 void	check_extension(char *file);
+void	validate_map(t_map *game);
 
 #endif

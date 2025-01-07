@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:30:19 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/03 16:32:18 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:27:42 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 int	main(int argc, char **argv)
 {
 	int		fd;
-	t_map	*game;
+	t_map	game;
 
 	if (argc == 2)
 	{
 		check_extension(argv[1]);
-		game = malloc(1 * sizeof(t_map));
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
 			ft_kill (2);
-		read_map(argv[1], game);
+		ft_memset(&game, 0, sizeof(t_map));
+		read_map(argv[1], &game);
+		
+		printf("\nwidth=%zu\nheight=%d\n", game.width, game.height);
 	}
 	return (0);
 }

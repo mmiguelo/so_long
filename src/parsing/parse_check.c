@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kill.c                                             :+:      :+:    :+:   */
+/*   parse_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 11:31:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/07 15:12:11 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/01/07 15:34:53 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/01/07 15:54:14 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_kill(int number)
+void	validate_map(t_map *game)
 {
-	ft_printf("Error\n");
-	if (number == 1)
-		ft_printf("%s\n", EXTENSION_ERROR);
-	if (number == 2)
-		ft_printf("%s\n", MAP_ERROR);
-	if (number == 3)
-		ft_printf("%s\n", SIZE_ERROR);
-	exit(1);
+	validate_boarders(game); // check boarders
+	validate_size(game); // check map size
+	validate_elements(game); // check map content
+	validate_path(game); // check valid path
+	validate_collectibles(game); //check amount of collectibles
+	validate_P_E(game); // check assets
 }
