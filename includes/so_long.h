@@ -6,10 +6,9 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/07 15:38:28 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:11:19 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -19,7 +18,7 @@
 # define EXTENSION_ERROR "map extension is wrong. correct map extension is .ber"
 # define MAP_ERROR "couldn't open map"
 # define SIZE_ERROR "size of the map is wrong"
-
+# define BOARDER_ERROR "map is not surrounded by walls"
 
 typedef struct s_player
 {
@@ -30,13 +29,13 @@ typedef struct s_player
 typedef struct s_map
 {
 	size_t			width;
-	int			height;
-	int			collectibles;
-	int			exit;
-	int			movement;
-	char		**map;
-	t_player	player;
-}	t_map;
+	int				height;
+	int				collectibles;
+	int				exit;
+	int				movement;
+	char			**map;
+	t_player		player;
+}					t_map;
 
 /*=============================================================================#
 #                               GENERAL                                        #

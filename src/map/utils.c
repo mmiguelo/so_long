@@ -6,18 +6,18 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:00:50 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/07 15:39:31 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:13:16 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int count_width(const char *str)
+int	count_width(const char *str)
 {
-	size_t i;
-	
+	size_t	i;
+
 	i = 0;
-	while(str[i] != '\n' && str[i] != '\r' && str[i] != '\0')
+	while (str[i] != '\n' && str[i] != '\r' && str[i] != '\0')
 		i++;
 	return (i);
 }
@@ -65,7 +65,7 @@ void	read_map(char *file, t_map *game)
 	int		fd;
 
 	game->height = count_lines(file);
-	if(game->height <= 0)
+	if (game->height <= 0)
 		ft_kill(3);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)

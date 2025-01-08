@@ -6,7 +6,7 @@
 #    By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:51:22 by mmiguelo          #+#    #+#              #
-#    Updated: 2025/01/07 15:35:06 by mmiguelo         ###   ########.fr        #
+#    Updated: 2025/01/08 11:14:26 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT = ./my_libft/libft.a
 RM = rm -rf
 
 GENERAL = main kill
-PARSING = extension parse_check
+PARSING = extension validation
 MAP = utils
 
 NAME = so_long

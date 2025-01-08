@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_check.c                                      :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 15:34:53 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/07 15:54:14 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/01/08 11:14:05 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/01/08 11:14:06 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "so_long.h"
+
+void	validate_boarders(t_map *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < game->height)
+	{
+		j = 0;
+		while (j < game->width)
+		{
+			if (i == 0 || i == game ->height - 1)
+				if (game->map[i][j] != '1')
+					ft_kill(4);
+		}
+	}
+}
 
 void	validate_map(t_map *game)
 {

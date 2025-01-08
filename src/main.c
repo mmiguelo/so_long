@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:30:19 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/07 15:27:42 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:11:50 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 			ft_kill (2);
 		ft_memset(&game, 0, sizeof(t_map));
 		read_map(argv[1], &game);
-		
+		validate_map(&game);
 		printf("\nwidth=%zu\nheight=%d\n", game.width, game.height);
 	}
 	return (0);
