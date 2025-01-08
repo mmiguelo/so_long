@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:31:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 12:44:23 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:40:18 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,11 @@ void	ft_kill(int number)
 		ft_printf("%s\n", BOARDER_ERROR);
 	if (number == 5)
 		ft_printf("%s\n", MALLOC_ERROR);
+	if (number == 6)
+		ft_printf("%s\n", PLAYER_ERROR);
+	if (number == 7)
+		ft_printf("%s\n", EXIT_ERROR);
+	if (number == 8)
+		ft_printf("%s\n", ASSETS_ERROR);
 	exit(1);
 }

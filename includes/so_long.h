@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 12:51:30 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:11:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 # define MAP_ERROR "couldn't open map"
 # define SIZE_ERROR "size of the map is wrong"
 # define BOARDER_ERROR "map is not surrounded by walls"
-# define ASSETS_ERROR "map is missing assets"
+# define MALLOC_ERROR "memory allocation failed"
+# define PLAYER_ERROR "map needs to have one player"
+# define EXIT_ERROR "map needs to have one exit"
+# define ASSETS_ERROR "The assets in the map are wrong"
 # define PATH_ERROR "map has no valid path"
 # define COLLECTIBLES_ERROR "map has no collectibles"
-# define PLAYER_ERROR "map has no player"
-# define EXIT_ERROR "map has no exit"
 # define MOVEMENT_ERROR "map has no movement"
-# define MALLOC_ERROR "memory allocation failed"
 
 
 typedef struct s_cell
@@ -61,10 +61,13 @@ t_map	*init(void);
 #                               CHECKERS                                       #
 #=============================================================================*/
 
+size_t	count_width(const char *str);
+size_t	count_lines(char *file);
 void	check_extension(char *file);
 void	validate_map(t_map *game);
 void	validate_boarders(t_map *game);
-size_t	count_width(const char *str);
-size_t	count_lines(char *file);
+void	validate_size(t_map *game);
+void	validate_assets(t_map *game);
+void	validate_elements(t_map *game);
 
 #endif
