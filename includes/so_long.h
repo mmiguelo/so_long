@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 11:11:19 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:35:43 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # define MAP_ERROR "couldn't open map"
 # define SIZE_ERROR "size of the map is wrong"
 # define BOARDER_ERROR "map is not surrounded by walls"
+# define ASSETS_ERROR "map is missing assets"
+# define PATH_ERROR "map has no valid path"
+# define COLLECTIBLES_ERROR "map has no collectibles"
+# define PLAYER_ERROR "map has no player"
+# define EXIT_ERROR "map has no exit"
+# define MOVEMENT_ERROR "map has no movement"
+
 
 typedef struct s_player
 {
@@ -28,14 +35,14 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	size_t			width;
-	int				height;
-	int				collectibles;
-	int				exit;
-	int				movement;
-	char			**map;
-	t_player		player;
-}					t_map;
+	int			width;
+	int			height;
+	int			collectibles;
+	int			exit;
+	int			movement;
+	char		**map;
+	t_player	player;
+}				t_map;
 
 /*=============================================================================#
 #                               GENERAL                                        #
@@ -52,5 +59,6 @@ void	copy_map(int fd, t_map *game);
 
 void	check_extension(char *file);
 void	validate_map(t_map *game);
+void	validate_boarders(t_map *game);
 
 #endif
