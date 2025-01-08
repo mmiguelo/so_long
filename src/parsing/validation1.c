@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validation1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 11:30:19 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 15:30:22 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/01/08 15:18:42 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/01/08 16:58:59 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	validate_collectibles(t_map *game)
 {
-	int		fd;
-	t_map	*game;
+	size_t	i;
+	size_t	j;
 
-	if (argc == 2)
+	i = -1;
+	while (++i < game->height)
 	{
-		check_extension(argv[1]);
-		fd = open(argv[1], O_RDONLY);
-		if (fd == -1)
-			ft_kill (2);
-		game = init();
-		read_map(argv[1], game);
-		validate_map(game);
-		printf("\ncollectibles=%zu\n", game->collectibles);
+		j = -1;
+		while (++j < game->width)
+		{
+			if (game->map[i][j] == 'C')
+				game->collectibles++;
+		}
 	}
-	return (0);
+	if (game->collectibles < 1)
+		ft_kill(9);
+}
+
+void	validate_path(t_map *game)
+{
+
 }

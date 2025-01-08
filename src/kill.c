@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:31:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 14:40:18 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:26:26 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ void	ft_kill(int number)
 		ft_printf("%s\n", EXIT_ERROR);
 	if (number == 8)
 		ft_printf("%s\n", ASSETS_ERROR);
+	if (number == 9)
+		ft_printf("%s\n", COLLECTIBLES_ERROR);
 	exit(1);
 }

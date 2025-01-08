@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 15:11:23 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:53:59 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@
 # define PLAYER_ERROR "map needs to have one player"
 # define EXIT_ERROR "map needs to have one exit"
 # define ASSETS_ERROR "The assets in the map are wrong"
-# define PATH_ERROR "map has no valid path"
 # define COLLECTIBLES_ERROR "map has no collectibles"
+# define PATH_ERROR "map has no valid path"
 # define MOVEMENT_ERROR "map has no movement"
-
 
 typedef struct s_cell
 {
@@ -36,14 +35,13 @@ typedef struct s_cell
 
 typedef struct s_map
 {
-	size_t			width;
-	size_t			height;
-	size_t			collectibles;
-	int				movement;
-	char			**map;
-	t_cell			player;
-	t_cell 			exit;
-	t_cell			coordenates;
+	size_t		width;
+	size_t		height;
+	size_t		collectibles;
+	int			movement;
+	char		**map;
+	t_cell		player;
+	t_cell		exit;
 }				t_map;
 
 /*=============================================================================#
@@ -69,5 +67,7 @@ void	validate_boarders(t_map *game);
 void	validate_size(t_map *game);
 void	validate_assets(t_map *game);
 void	validate_elements(t_map *game);
+void	validate_collectibles(t_map *game);
+void	validate_path(t_map *game);
 
 #endif

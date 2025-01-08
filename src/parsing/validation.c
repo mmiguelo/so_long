@@ -6,11 +6,9 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:14:05 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 15:09:18 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:57:56 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "so_long.h"
 
@@ -46,7 +44,8 @@ void	validate_size(t_map *game)
 	{
 		if (count_width(game->map[i]) != game->width)
 			ft_kill(3);
-		if (game->width + game->height < 8 || game->width < 5 || game->height < 3)
+		if (game->width + game->height < 8
+			|| game->width < 5 || game->height < 3)
 			ft_kill(3);
 	}
 }
@@ -55,9 +54,9 @@ void	validate_assets(t_map *game)
 {
 	size_t	i;
 	size_t	j;
-	int player;
-	int exit;
-	
+	int		player;
+	int		exit;
+
 	player = 0;
 	exit = 0;
 	i = -1;
@@ -80,8 +79,8 @@ void	validate_assets(t_map *game)
 
 void	validate_elements(t_map *game)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = -1;
 	while (++i < game->height)
@@ -101,10 +100,10 @@ void	validate_elements(t_map *game)
 
 void	validate_map(t_map *game)
 {
-	validate_boarders(game); // check boarders
-	validate_size(game); // check map size
-	validate_assets(game); // check assets
-	validate_elements(game); // check map content
-/* 	validate_path(game); // check valid path
-	validate_collectibles(game); //check amount of collectibles */
+	validate_boarders(game);
+	validate_size(game);
+	validate_assets(game);
+	validate_elements(game);
+	validate_collectibles(game);
+	validate_path(game);
 }
