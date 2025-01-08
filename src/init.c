@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 11:30:19 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 13:03:26 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/01/08 12:33:24 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/01/08 13:05:08 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	init_game(t_map *game)
 {
-	int		fd;
-	t_map	*game;
+	ft_memset(game, 0, sizeof(t_map));
+	ft_memset(&game->player, 0, sizeof(t_cell));
+	ft_memset(&game->exit, 0, sizeof(t_cell));
+	ft_memset(&game->coordenates, 0, sizeof(t_cell));
+}
 
-	if (argc == 2)
-	{
-		check_extension(argv[1]);
-		fd = open(argv[1], O_RDONLY);
-		if (fd == -1)
-			ft_kill (2);
-		game = init();
-	/* 	read_map(argv[1], game);
-		validate_map(game); */
-		printf("\nx=%d\ny=%d\n", game->coordenates.x, game->coordenates.y);
-	}
-	return (0);
+t_map	*init(void)
+{
+	t_map *game;
+
+	game = malloc(sizeof(t_map));
+	if (!game)
+		ft_kill(5);
+	init_game(game);
+	return (game);
 }

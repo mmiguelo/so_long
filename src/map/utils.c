@@ -6,13 +6,13 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:00:50 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 11:13:16 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:43:34 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_width(const char *str)
+size_t	count_width(const char *str)
 {
 	size_t	i;
 
@@ -22,11 +22,11 @@ int	count_width(const char *str)
 	return (i);
 }
 
-int	count_lines(char *file)
+size_t	count_lines(char *file)
 {
-	int		lines;
-	int		fd;
-	char	*temp;
+	size_t		lines;
+	int			fd;
+	char		*temp;
 
 	lines = 0;
 	fd = open(file, O_RDONLY);
@@ -72,7 +72,7 @@ void	read_map(char *file, t_map *game)
 		ft_kill(2);
 	game->map = ft_calloc(game->height + 1, sizeof(char *));
 	if (!game->map)
-		ft_kill(2);
+		ft_kill(6);
 	copy_map(fd, game);
 	game->width = count_width(game->map[0]);
 	close(fd);

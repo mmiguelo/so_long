@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 11:35:43 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:51:30 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,25 @@
 # define PLAYER_ERROR "map has no player"
 # define EXIT_ERROR "map has no exit"
 # define MOVEMENT_ERROR "map has no movement"
+# define MALLOC_ERROR "memory allocation failed"
 
 
-typedef struct s_player
+typedef struct s_cell
 {
 	int	x;
 	int	y;
-}	t_player;
+}	t_cell;
 
 typedef struct s_map
 {
-	int			width;
-	int			height;
-	int			collectibles;
-	int			exit;
-	int			movement;
-	char		**map;
-	t_player	player;
+	size_t			width;
+	size_t			height;
+	size_t			collectibles;
+	int				movement;
+	char			**map;
+	t_cell			player;
+	t_cell 			exit;
+	t_cell			coordenates;
 }				t_map;
 
 /*=============================================================================#
@@ -50,8 +52,10 @@ typedef struct s_map
 
 void	ft_kill(int number);
 void	read_map(char *argv, t_map *game);
-void	initialize_game(t_map *game);
 void	copy_map(int fd, t_map *game);
+void	initialize(t_map *game);
+void	init_game(t_map *game);
+t_map	*init(void);
 
 /*=============================================================================#
 #                               CHECKERS                                       #
@@ -60,5 +64,7 @@ void	copy_map(int fd, t_map *game);
 void	check_extension(char *file);
 void	validate_map(t_map *game);
 void	validate_boarders(t_map *game);
+size_t	count_width(const char *str);
+size_t	count_lines(char *file);
 
 #endif
