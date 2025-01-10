@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/10 16:37:01 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:44:31 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct t_point
 	int			movement;
 	char		**map;
 	t_cell		player;
-	t_cell		exit;
+	int			exit;
 }				t_map;
 
 /*=============================================================================#
