@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:14:05 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/10 15:36:56 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:33:48 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	validate_boarders(t_map *game)
 		{
 			if (i == 0 || i == game->height - 1)
 				if (game->map[i][j] != '1')
-					ft_kill(4);
+					ft_kill(4, game);
 			if (j == 0 || j == game->width -1)
 				if (game->map[i][j] != '1')
-					ft_kill(4);
+					ft_kill(4, game);
 			j++;
 		}
 		i++;
@@ -43,10 +43,10 @@ void	validate_size(t_map *game)
 	while (++i < game->height)
 	{
 		if (count_width(game->map[i]) != game->width)
-			ft_kill(3);
+			ft_kill(3, game);
 		if (game->width + game->height < 8
 			|| game->width < 5 || game->height < 3)
-			ft_kill(3);
+			ft_kill(3, game);
 	}
 }
 
@@ -74,9 +74,9 @@ void	validate_assets(t_map *game)
 		}
 	}
 	if (player != 1)
-		ft_kill(6);
+		ft_kill(6, game);
 	if (exit != 1)
-		ft_kill(7);
+		ft_kill(7, game);
 }
 
 void	validate_elements(t_map *game)
@@ -95,7 +95,7 @@ void	validate_elements(t_map *game)
 				&& game->map[i][j] != 'P'
 				&& game->map[i][j] != 'E'
 				&& game->map[i][j] != 'C')
-				ft_kill(8);
+				ft_kill(8, game);
 		}
 	}
 }

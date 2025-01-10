@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:33:24 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 16:54:14 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:31:15 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_map	*init(void)
 
 	game = malloc(sizeof(t_map));
 	if (!game)
-		ft_kill(5);
+		ft_kill(5, game);
 	init_game(game);
 	return (game);
 }

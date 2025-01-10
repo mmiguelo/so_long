@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:00:50 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/10 16:27:05 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:33:07 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t	count_lines(char *file)
 	lines = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		ft_kill (2);
+		ft_kill(2, NULL);
 	temp = get_next_line(fd);
 	while (temp)
 	{
@@ -66,13 +66,13 @@ void	read_map(char *file, t_map *game)
 
 	game->height = count_lines(file);
 	if (game->height <= 0)
-		ft_kill(3);
+		ft_kill(3, game);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		ft_kill(2);
+		ft_kill(2, game);
 	game->map = ft_calloc(game->height + 1, sizeof(char *));
 	if (!game->map)
-		ft_kill(6);
+		ft_kill(6, game);
 	copy_map(fd, game);
 	game->width = count_width(game->map[0]);
 	close(fd);
