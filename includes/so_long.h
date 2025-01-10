@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 16:53:59 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:17:47 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,25 @@
 # define SIZE_ERROR "size of the map is wrong"
 # define BOARDER_ERROR "map is not surrounded by walls"
 # define MALLOC_ERROR "memory allocation failed"
-# define PLAYER_ERROR "map needs to have one player"
-# define EXIT_ERROR "map needs to have one exit"
+# define PLAYER_ERROR "Map has to be one player"
+# define EXIT_ERROR "Map has to be one exit"
 # define ASSETS_ERROR "The assets in the map are wrong"
 # define COLLECTIBLES_ERROR "map has no collectibles"
 # define PATH_ERROR "map has no valid path"
 # define MOVEMENT_ERROR "map has no movement"
 
-typedef struct s_cell
+typedef struct s_point
 {
-	int	x;
-	int	y;
+	int	x; // width
+	int	y; // height
 }	t_cell;
 
-typedef struct s_map
+typedef struct t_point
 {
 	size_t		width;
 	size_t		height;
 	size_t		collectibles;
+	size_t		gathered;
 	int			movement;
 	char		**map;
 	t_cell		player;
@@ -48,19 +49,19 @@ typedef struct s_map
 #                               GENERAL                                        #
 #=============================================================================*/
 
-void	ft_kill(int number);
-void	read_map(char *argv, t_map *game);
-void	copy_map(int fd, t_map *game);
-void	initialize(t_map *game);
-void	init_game(t_map *game);
 t_map	*init(void);
+void	init_game(t_map *game);
+void	read_map(char *argv, t_map *game);
+size_t	count_width(const char *str);
+size_t	count_lines(char *file);
+void	copy_map(int fd, t_map *game);
+void	ft_free_map(t_map *game);
+void	ft_kill(int number);
 
 /*=============================================================================#
 #                               CHECKERS                                       #
 #=============================================================================*/
 
-size_t	count_width(const char *str);
-size_t	count_lines(char *file);
 void	check_extension(char *file);
 void	validate_map(t_map *game);
 void	validate_boarders(t_map *game);
@@ -69,5 +70,6 @@ void	validate_assets(t_map *game);
 void	validate_elements(t_map *game);
 void	validate_collectibles(t_map *game);
 void	validate_path(t_map *game);
+void	ft_flood_fill(char **duplicate, t_map *game, int x, int y);
 
 #endif

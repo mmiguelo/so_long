@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:30:19 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 15:30:22 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:56:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 		game = init();
 		read_map(argv[1], game);
 		validate_map(game);
-		printf("\ncollectibles=%zu\n", game->collectibles);
 	}
 	return (0);
 }

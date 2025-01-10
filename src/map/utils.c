@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:00:50 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 12:43:34 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:27:05 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,14 @@ void	read_map(char *file, t_map *game)
 	copy_map(fd, game);
 	game->width = count_width(game->map[0]);
 	close(fd);
+}
+
+void	ft_free_map(t_map *game)
+{
+	size_t	y;
+
+	y = -1;
+	while (++y < game->height)
+		free(game->map[y]);
+	free(game->map);
 }

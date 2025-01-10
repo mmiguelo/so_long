@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:14:05 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/08 16:57:56 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:36:56 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	validate_boarders(t_map *game)
 		j = 0;
 		while (j < game->width)
 		{
-			if (i == 0 || i == game ->height - 1)
+			if (i == 0 || i == game->height - 1)
 				if (game->map[i][j] != '1')
 					ft_kill(4);
 			if (j == 0 || j == game->width -1)
@@ -65,10 +65,12 @@ void	validate_assets(t_map *game)
 		j = -1;
 		while (++j < game->width)
 		{
+			player += (game->map[i][j] == 'P');
+			exit += (game->map[i][j] == 'E');
 			if (game->map[i][j] == 'P')
-				player++;
+				game->player = (t_cell){j, i};
 			if (game->map[i][j] == 'E')
-				exit++;
+				game->exit = (t_cell){j, i};
 		}
 	}
 	if (player != 1)
