@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:18:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/10 16:33:56 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:38:07 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	validate_collectibles(t_map *game)
 		ft_kill(9, game);
 }
 
-void	ft_floof_fill(char **duplicate, t_map *game, int x, int y)
+void	ft_flood_fill(char **duplicate, t_map *game, size_t x, size_t y)
 {
 	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
 		return ;
@@ -49,10 +49,10 @@ void	ft_floof_fill(char **duplicate, t_map *game, int x, int y)
 	}
 	else
 		duplicate[y][x] = 'F';
-	ft_floof_fill(duplicate, game, x + 1, y);
-	ft_floof_fill(duplicate, game, x - 1, y);
-	ft_floof_fill(duplicate, game, x, y + 1);
-	ft_floof_fill(duplicate, game, x, y - 1);
+	ft_flood_fill(duplicate, game, x + 1, y);
+	ft_flood_fill(duplicate, game, x - 1, y);
+	ft_flood_fill(duplicate, game, x, y + 1);
+	ft_flood_fill(duplicate, game, x, y - 1);
 }
 
 void	validate_path(t_map *game)

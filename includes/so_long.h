@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/10 16:28:45 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:37:01 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	validate_assets(t_map *game);
 void	validate_elements(t_map *game);
 void	validate_collectibles(t_map *game);
 void	validate_path(t_map *game);
-void	ft_flood_fill(char **duplicate, t_map *game, int x, int y);
+void	ft_flood_fill(char **duplicate, t_map *game, size_t x, size_t y);
 
 #endif
