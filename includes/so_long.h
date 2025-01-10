@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/10 16:44:31 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:09:23 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	read_map(char *argv, t_map *game);
 size_t	count_width(const char *str);
 size_t	count_lines(char *file);
 void	copy_map(int fd, t_map *game);
-void	ft_free_map(t_map *game);
+void	ft_free_array(char **duplicate, size_t height);
 void	ft_kill(int number, t_map *game);
 
 /*=============================================================================#

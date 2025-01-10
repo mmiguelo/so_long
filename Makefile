@@ -6,7 +6,7 @@
 #    By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:51:22 by mmiguelo          #+#    #+#              #
-#    Updated: 2025/01/08 15:18:37 by mmiguelo         ###   ########.fr        #
+#    Updated: 2025/01/10 17:08:45 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM = rm -rf
 
 GENERAL = main kill init
 PARSING = extension validation validation1
-MAP = utils
+MAP = utils free
 
 NAME = so_long
 
