@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 16:53:02 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/11 17:29:00 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/11 17:51:05 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ void	ft_free_array(char **duplicate, size_t height)
 	size_t	y;
 
 	y = 0;
-	if (duplicate)
+	if(!duplicate[0])
 	{
-		while (y < height)
-		{
-			free(duplicate[y]);
-			y++;
-		}
 		free(duplicate);
+		return ;
 	}
+	while (y < height)
+	{
+		free(duplicate[y]);
+		y++;
+	}
+	free(duplicate);
 }
 
 void	ft_free_map(t_map *game)
@@ -38,14 +40,25 @@ void	ft_free_map(t_map *game)
 	size_t	y;
 
 	y = 0;
-	if (game->map)
+	if(!game->map[0])
 	{
-		while (game->map)
-		{
-			free(game->map[y]);
-			y++;
-		}
 		free(game->map);
+		return ;
 	}
+	while (y < game->height)
+	{
+		free(game->map[y]);
+		y++;
+	}
+	free(game->map);
+}
+
+void	ft_free_all(t_map *game)
+{
+	if(!game)
+		return ;
+	if(game->map)
+		ft_free_map(game);
 	free(game);
+	exit(1);
 }
