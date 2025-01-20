@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:14:05 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/10 16:48:50 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:07:10 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,13 @@ void	validate_assets(t_map *game)
 			player += (game->map[i][j] == 'P');
 			exit += (game->map[i][j] == 'E');
 			if (game->map[i][j] == 'P')
-				game->player = (t_cell){j, i};
+				game->player = (t_point){j, i};
 			if (game->map[i][j] == 'E')
-				game->exit += 1;
+				game->exit = (t_point){j, i};
 		}
 	}
-	if (player != 1)
+	if (player != 1 || exit != 1)
 		ft_kill(6, game);
-	if (exit != 1)
-		ft_kill(7, game);
 }
 
 void	validate_elements(t_map *game)
@@ -95,7 +93,7 @@ void	validate_elements(t_map *game)
 				&& game->map[i][j] != 'P'
 				&& game->map[i][j] != 'E'
 				&& game->map[i][j] != 'C')
-				ft_kill(8, game);
+				ft_kill(9, game);
 		}
 	}
 }

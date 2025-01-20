@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/11 17:24:39 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:03:02 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,49 @@
 # define SO_LONG_H
 
 # include "../my_libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
+# include <X11/keysym.h>
+# include <X11/X.h>
+
+/*=============================================================================#
+#                               DEFINES                                        #
+#=============================================================================*/
 
 # define EXTENSION_ERROR "map extension is wrong. correct map extension is .ber"
 # define MAP_ERROR "couldn't open map"
 # define SIZE_ERROR "size of the map is wrong"
 # define BOARDER_ERROR "map is not surrounded by walls"
 # define MALLOC_ERROR "memory allocation failed"
-# define PLAYER_ERROR "Map has to be one player"
-# define EXIT_ERROR "Map has to be one exit"
+# define PLAYER_ERROR "Map has to be one player and one exit only"
 # define ASSETS_ERROR "The assets in the map are wrong"
 # define COLLECTIBLES_ERROR "map has no collectibles"
 # define PATH_ERROR "map has no valid path"
-# define MOVEMENT_ERROR "map has no movement"
+# define MLX_ERROR "Error on the MLX"
+
+# define SIZE 85
+
+/*=============================================================================#
+#                               STRUCTS                                        #
+#=============================================================================*/
 
 typedef struct s_point
 {
 	int	x; // width
 	int	y; // height
-}	t_cell;
+}	t_point;
 
-typedef struct t_point
+typedef struct s_image
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+
+}	t_image;
+
+typedef struct s_map
 {
 	size_t		width;
 	size_t		height;
@@ -41,8 +64,12 @@ typedef struct t_point
 	size_t		gathered;
 	int			movement;
 	char		**map;
-	t_cell		player;
-	int			exit;
+	t_point		player;
+	t_point		exit;
+	t_point		tile;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_image		image;
 }				t_map;
 
 /*=============================================================================#
@@ -56,7 +83,6 @@ size_t	count_width(const char *str);
 size_t	count_lines(char *file);
 void	copy_map(int fd, t_map *game);
 void	ft_free_array(char **duplicate, size_t height);
-void	ft_free_map(t_map *game);
 void	ft_kill(int number, t_map *game);
 
 /*=============================================================================#

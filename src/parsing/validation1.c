@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:18:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/11 17:27:23 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:19:14 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	validate_collectibles(t_map *game)
 		}
 	}
 	if (game->collectibles < 1)
-		ft_kill(9, game);
+		ft_kill(7, game);
 }
 
 void	ft_flood_fill(char **duplicate, t_map *game, size_t x, size_t y)
 {
-	if (x <= 0 || y <= 0 || x >= game->width || y >= game->height)
+	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
 		return ;
 	if (duplicate[y][x] == 'C')
 	{
@@ -71,6 +71,6 @@ void	validate_path(t_map *game)
 	if (game->collectibles != game->gathered || game->exit)
 	{
 		ft_free_array(duplicate, game->height);
-		ft_kill(10, game);
+		ft_kill(8, game);
 	}
 }

@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 11:30:19 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/20 13:20:18 by mmiguelo         ###   ########.fr       */
+/*   Created: 2025/01/20 12:26:57 by mmiguelo          #+#    #+#             */
+/*   Updated: 2025/01/20 13:03:21 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	open_window(t_map *game)
 {
-	int		fd;
-	t_map	*game;
-
-	if (argc == 2)
-	{
-		check_extension(argv[1]);
-		fd = open(argv[1], O_RDONLY);
-		if (fd <= 0)
-			ft_kill(2, NULL);
-		game = init();
-		read_map(argv[1], game);
-		validate_map(game);
-	}
-	return (0);
+	if (game->mlx_ptr == NULL)
+		ft_kill(10, game);
+	game->win_ptr = mlx_new_window(game->mlx_ptr, game->width * SIZE, game->height * SIZE, "so_long");
+}
+void	render(t_map *game)
+{
+	
 }

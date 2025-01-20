@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:31:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/11 18:00:10 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:07:03 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	ft_kill(int number, t_map *game)
 	if (number == 6)
 		ft_printf("%s\n", PLAYER_ERROR);
 	if (number == 7)
-		ft_printf("%s\n", EXIT_ERROR);
-	if (number == 8)
-		ft_printf("%s\n", ASSETS_ERROR);
-	if (number == 9)
 		ft_printf("%s\n", COLLECTIBLES_ERROR);
-	if (number == 10)
+	if (number == 8)
 		ft_printf("%s\n", PATH_ERROR);
+	if (number == 9)
+		ft_printf("%s\n", ASSETS_ERROR);
+	if (number == 10)
+		ft_printf("%s\n", MLX_ERROR);
 	if (number > 2)
 		ft_free_map(game);
-	exit(EXIT_SUCCESS);
+	exit(1);
 }

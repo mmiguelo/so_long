@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:00:50 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/10 16:53:00 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:05:20 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	read_map(char *file, t_map *game)
 		ft_kill(2, game);
 	game->map = ft_calloc(game->height + 1, sizeof(char *));
 	if (!game->map)
-		ft_kill(6, game);
+		ft_kill(3, game);
 	copy_map(fd, game);
 	game->width = count_width(game->map[0]);
 	close(fd);
