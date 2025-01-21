@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:30:19 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/20 13:20:18 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:33:31 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 		game = init();
 		read_map(argv[1], game);
 		validate_map(game);
+		render(game);
 	}
 	return (0);
 }

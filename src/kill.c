@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 11:31:01 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/20 13:07:03 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:35:10 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	ft_kill(int number, t_map *game)
 	if (number == 10)
 		ft_printf("%s\n", MLX_ERROR);
 	if (number > 2)
-		ft_free_map(game);
+		ft_free_all(game);
 	exit(1);
 }

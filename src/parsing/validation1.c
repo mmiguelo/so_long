@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:18:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/20 13:19:14 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:16:07 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,23 @@ void	ft_flood_fill(char **duplicate, t_map *game, size_t x, size_t y)
 {
 	if (x < 0 || y < 0 || x >= game->width || y >= game->height)
 		return ;
-	if (duplicate[y][x] == 'C')
+	else if (duplicate[y][x] == 'C')
 	{
 		game->gathered++;
 		duplicate[y][x] = 'F';
 	}
-	if (duplicate[y][x] == '1' || duplicate[y][x] == 'F')
+	else if (duplicate[y][x] == '1' || duplicate[y][x] == 'F')
 		return ;
-	if (duplicate[y][x] == 'E' && game->collectibles != game->gathered)
+	else if (duplicate[y][x] == 'E')
 	{
-		game->exit--;
+		game->exit_check++;
 		duplicate[y][x] = 'F';
-		return ;
 	}
 	else
 		duplicate[y][x] = 'F';
 	ft_flood_fill(duplicate, game, x + 1, y);
-	ft_flood_fill(duplicate, game, x - 1, y);
 	ft_flood_fill(duplicate, game, x, y + 1);
+	ft_flood_fill(duplicate, game, x - 1, y);
 	ft_flood_fill(duplicate, game, x, y - 1);
 }
 
@@ -68,9 +67,10 @@ void	validate_path(t_map *game)
 	while (++i < game->height)
 		duplicate[i] = ft_strdup(game->map[i]);
 	ft_flood_fill(duplicate, game, game->player.x, game->player.y);
-	if (game->collectibles != game->gathered || game->exit)
+	if (game->collectibles != game->gathered || game->exit_check != 1)
 	{
 		ft_free_array(duplicate, game->height);
 		ft_kill(8, game);
 	}
+	ft_free_array(duplicate, game->height);
 }

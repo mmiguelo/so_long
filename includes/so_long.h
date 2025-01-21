@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/20 13:03:02 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:14:52 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ typedef struct s_map
 	size_t		height;
 	size_t		collectibles;
 	size_t		gathered;
-	int			movement;
 	char		**map;
+	int			exit_check;
+	int			movement;
 	t_point		player;
 	t_point		exit;
 	t_point		tile;
@@ -78,12 +79,15 @@ typedef struct s_map
 
 t_map	*init(void);
 void	init_game(t_map *game);
+void	init_image(t_map *game);
 void	read_map(char *argv, t_map *game);
 size_t	count_width(const char *str);
 size_t	count_lines(char *file);
 void	copy_map(int fd, t_map *game);
 void	ft_free_array(char **duplicate, size_t height);
 void	ft_kill(int number, t_map *game);
+void	ft_free_all(t_map *game);
+void	ft_free_map(t_map *game);
 
 /*=============================================================================#
 #                               CHECKERS                                       #
@@ -98,5 +102,28 @@ void	validate_elements(t_map *game);
 void	validate_collectibles(t_map *game);
 void	validate_path(t_map *game);
 void	ft_flood_fill(char **duplicate, t_map *game, size_t x, size_t y);
+
+/*=============================================================================#
+#                               RENDER                                         #
+#=============================================================================*/
+
+void	render(t_map *game);
+void	open_window(t_map *game);
+void	render_image(t_map *game, char *xpm, int x, int y);
+void	insert_wall(t_map *game, int x, int y);
+void	insert_floor(t_map *game, int x, int y);
+/* void	render_map(t_map *game);
+void	render_player(t_map *game);
+void	render_collectibles(t_map *game);
+void	render_exit(t_map *game); */
+
+/*=============================================================================#
+#                               MOVEMENTS                                      #
+#=============================================================================*/
+
+void	move_up(t_map *game);
+void	move_down(t_map *game);
+void	move_left(t_map *game);
+void	move_right(t_map *game);
 
 #endif

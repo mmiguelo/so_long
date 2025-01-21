@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 16:53:02 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/20 14:02:12 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:10:39 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,4 @@ void	ft_free_all(t_map *game)
 	if (game->map)
 		ft_free_map(game);
 	free(game);
-	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 13:00:50 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/20 13:05:20 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:20:27 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	copy_map(int fd, t_map *game)
 		temp = get_next_line(fd);
 		i++;
 	}
+	free(temp);
 	game->map[i] = NULL;
 }
 
