@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:26:57 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/23 11:30:24 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:50:19 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	create_sprites(t_map *game)
 	int	x;
 
 	game->floor = mlx_xpm_file_to_image(game->mlx_ptr,
-			"./textures/floor2.xpm", &x, &y);
+			"./textures/floor.xpm", &x, &y);
 	game->exit = mlx_xpm_file_to_image(game->mlx_ptr,
 			"./textures/exit.xpm", &x, &y);
 	game->wall = mlx_xpm_file_to_image(game->mlx_ptr,
 			"./textures/wall.xpm", &x, &y);
 	game->player = mlx_xpm_file_to_image(game->mlx_ptr,
-			"./textures/player2.xpm", &x, &y);
+			"./textures/player.xpm", &x, &y);
 	game->bucket = mlx_xpm_file_to_image(game->mlx_ptr,
-			"./textures/wooden_bucket.xpm", &x, &y);
+			"./textures/bucket.xpm", &x, &y);
 }
 
 void	open_window(t_map *game)
@@ -86,5 +86,6 @@ void	render(t_map *game)
 	create_sprites(game);
 	render_map(game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &key_press, game);
+	mlx_hook(game->win_ptr, DestroyNotify, 0, ft_exit_game, game);
 	mlx_loop(game->mlx_ptr);
 }

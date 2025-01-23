@@ -6,16 +6,11 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 16:53:02 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/23 11:17:18 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:46:47 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/* void	ft_free_map(t_map *game)
-{
-	
-} */
 
 void	ft_free_array(char **duplicate, size_t height)
 {
@@ -67,6 +62,12 @@ void	destroy_images(t_map *game)
 		mlx_destroy_image(game->mlx_ptr, game->bucket);
 }
 
+int	ft_exit_game(t_map *game)
+{
+	ft_free_all(game);
+	exit(0);
+}
+
 void	ft_free_all(t_map *game)
 {
 	if (!game)
@@ -84,4 +85,5 @@ void	ft_free_all(t_map *game)
 		free(game->mlx_ptr);
 	}
 	free(game);
+	return ;
 }

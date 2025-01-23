@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/23 11:02:58 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:47:35 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "../my_libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
-# include <X11/keysym.h>
-# include <X11/X.h>
 
 /*=============================================================================#
 #                               DEFINES                                        #
@@ -68,6 +66,7 @@ typedef struct s_map
 	void		*player;
 	t_point		player_pos;
 	void		*exit;
+	t_point		exit_pos;
 	void		*floor;
 	void		*bucket;
 	void		*wall;
@@ -91,6 +90,7 @@ void	ft_free_array(char **duplicate, size_t height);
 void	ft_kill(int number, t_map *game);
 void	ft_free_all(t_map *game);
 void	ft_free_map(t_map *game);
+int		ft_exit_game(t_map *game);
 
 /*=============================================================================#
 #                               CHECKERS                                       #

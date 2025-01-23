@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:18:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/21 18:21:20 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:57:26 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	ft_flood_fill(char **duplicate, t_map *game, size_t x, size_t y)
 		return ;
 	else if (duplicate[y][x] == 'E')
 	{
-		game->exit_check++;
-		duplicate[y][x] = 'F';
+		game->exit_check = 1;
+		return ;
 	}
 	else
 		duplicate[y][x] = 'F';
