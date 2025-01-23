@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 13:55:51 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/23 11:31:14 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:58:43 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_win(t_map *game)
 	{
 		game->movement++;
 		ft_printf("Number of movements: %d\n", game->movement);
-		ft_printf("You won!\n");
+		ft_printf("You are now ready to fight fire!\n");
 		ft_free_all(game);
 		exit(1);
 	}
