@@ -6,7 +6,7 @@
 #    By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/30 16:51:22 by mmiguelo          #+#    #+#              #
-#    Updated: 2025/01/21 14:15:19 by mmiguelo         ###   ########.fr        #
+#    Updated: 2025/01/23 11:30:55 by mmiguelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ RM = rm -rf
 GENERAL = main kill init
 PARSING = extension validation validation1
 MAP = utils free
-RENDER = render render1
-MOVEMENTS = movement
+RENDER = render
+MOVEMENTS = movement movement1
 
 NAME = so_long
 
@@ -89,6 +89,7 @@ fclean: clean
 
 download:
 	@wget https://cdn.intra.42.fr/document/document/27195/minilibx-linux.tgz
+	echo ola
 	@tar -xzf minilibx-linux.tgz
 	@rm -rf minilibx-linux.tgz
 

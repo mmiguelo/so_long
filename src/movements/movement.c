@@ -6,105 +6,90 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 13:55:51 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/21 14:49:53 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:31:14 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_up(t_map *game)
+void	check_win(t_map *game)
 {
-	if (game->map[game->player.y - 1][game->player.x] == '1')
-		return ;
-	if (game->map[game->player.y - 1][game->player.x] == 'C')
+	if (game->collectibles == 0)
 	{
-		game->player.y--;
-		game->collectibles--;
 		game->movement++;
-	}
-	if (game->map[game->player.y - 1][game->player.x] == 'E')
-	{
-		if (game->collectibles == 0)
-		{
-			game->player.y--;
-			game->movement++;
-			ft_kill(0, game);
-		}
-		game->player.y--;
-		game->movement++;
+		ft_printf("Number of movements: %d\n", game->movement);
+		ft_printf("You won!\n");
+		ft_free_all(game);
+		exit(1);
 	}
 }
 
-void	move_down(t_map *game)
+void	validate_move_up_down(int key, t_map *game)
 {
-	if (game->map[game->player.y + 1][game->player.x] == '1')
-		return ;
-	if (game->map[game->player.y + 1][game->player.x] == 'C')
+	if (key == XK_w || key == XK_Up)
 	{
-		game->player.y++;
-		game->collectibles--;
+		if (game->map[game->player_pos.y - 1][game->player_pos.x] == '1')
+			return ;
+		else if (game->map[game->player_pos.y - 1][game->player_pos.x] == 'E'
+				&& game->collectibles != 0)
+			return ;
+		else
+			move_up(game);
 		game->movement++;
+		ft_printf("Number of movements: %d\n", game->movement);
 	}
-	if (game->map[game->player.y + 1][game->player.x] == 'E')
+	else if (key == XK_s || key == XK_Down)
 	{
-		if (game->collectibles == 0)
-		{
-			game->player.y++;
-			game->movement++;
-			ft_kill(0, game);
-		}
-		game->player.y++;
+		if (game->map[game->player_pos.y + 1][game->player_pos.x] == '1')
+			return ;
+		else if (game->map[game->player_pos.y + 1][game->player_pos.x] == 'E'
+				&& game->collectibles != 0)
+			return ;
+		else
+			move_down(game);
 		game->movement++;
+		ft_printf("Number of movements: %d\n", game->movement);
 	}
 }
 
-void	move_left(t_map *game)
+void	validate_move_left_right(int key, t_map *game)
 {
-	if (game->map[game->player.y][game->player.x - 1] == '1')
-		return ;
-	if (game->map[game->player.y][game->player.x - 1] == 'C')
+	if (key == XK_a || key == XK_Left)
 	{
-		game->player.x--;
-		game->collectibles--;
+		if (game->map[game->player_pos.y][game->player_pos.x - 1] == '1')
+			return ;
+		else if (game->map[game->player_pos.y][game->player_pos.x - 1] == 'E'
+				&& game->collectibles != 0)
+			return ;
+		else
+			move_left(game);
 		game->movement++;
+		ft_printf("Number of movements: %d\n", game->movement);
 	}
-	if (game->map[game->player.y][game->player.x - 1] == 'E')
+	if (key == XK_d || key == XK_Right)
 	{
-		if (game->collectibles == 0)
-		{
-			game->player.x--;
-			game->movement++;
-			ft_kill(0, game);
-		}
-		game->player.x--;
+		if (game->map[game->player_pos.y][game->player_pos.x + 1] == '1')
+			return ;
+		else if (game->map[game->player_pos.y][game->player_pos.x + 1] == 'E'
+				&& game->collectibles != 0)
+			return ;
+		else
+			move_right(game);
 		game->movement++;
+		ft_printf("Number of movements: %d\n", game->movement);
 	}
 }
 
-void	moe_right(t_map *game)
+int	key_press(int key, t_map *game)
 {
-	if (game->map[game->player.y][game->player.x + 1] == '1')
-		return ;
-	if (game->map[game->player.y][game->player.x + 1] == 'C')
+	if (key == XK_Escape)
 	{
-		game->player.x++;
-		game->collectibles--;
-		game->movement++;
+		ft_free_all(game);
+		exit(1);
 	}
-	if (game->map[game->player.y][game->player.x + 1] == 'E')
-	{
-		if (game->collectibles == 0)
-		{
-			game->player.x++;
-			game->movement++;
-			ft_kill(0, game);
-		}
-		game->player.x++;
-		game->movement++;
-	}
+	if ((key == XK_w || key == XK_Up) || (key == XK_s || key == XK_Down))
+		validate_move_up_down(key, game);
+	if ((key == XK_a || key == XK_Left) || (key == XK_d || key == XK_Right))
+		validate_move_left_right(key, game);
+	return (0);
 }
-
-/* void	check_moves(t_map *game)
-{
-	if (game->map())
-} */

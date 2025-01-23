@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:18:42 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/21 15:16:07 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:21:20 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	validate_path(t_map *game)
 	i = -1;
 	while (++i < game->height)
 		duplicate[i] = ft_strdup(game->map[i]);
-	ft_flood_fill(duplicate, game, game->player.x, game->player.y);
+	ft_flood_fill(duplicate, game, game->player_pos.x, game->player_pos.y);
 	if (game->collectibles != game->gathered || game->exit_check != 1)
 	{
 		ft_free_array(duplicate, game->height);

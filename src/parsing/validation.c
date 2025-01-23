@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:14:05 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/20 13:07:10 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:21:46 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,12 @@ void	validate_assets(t_map *game)
 		while (++j < game->width)
 		{
 			player += (game->map[i][j] == 'P');
-			exit += (game->map[i][j] == 'E');
 			if (game->map[i][j] == 'P')
-				game->player = (t_point){j, i};
-			if (game->map[i][j] == 'E')
-				game->exit = (t_point){j, i};
+			{
+				game->player_pos.x = j;
+				game->player_pos.y = i;
+			}
+			exit += (game->map[i][j] == 'E');
 		}
 	}
 	if (player != 1 || exit != 1)

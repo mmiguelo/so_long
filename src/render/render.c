@@ -6,11 +6,28 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:26:57 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/21 17:32:12 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:30:24 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	create_sprites(t_map *game)
+{
+	int	y;
+	int	x;
+
+	game->floor = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./textures/floor2.xpm", &x, &y);
+	game->exit = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./textures/exit.xpm", &x, &y);
+	game->wall = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./textures/wall.xpm", &x, &y);
+	game->player = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./textures/player2.xpm", &x, &y);
+	game->bucket = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./textures/wooden_bucket.xpm", &x, &y);
+}
 
 void	open_window(t_map *game)
 {
@@ -29,19 +46,36 @@ void	open_window(t_map *game)
 
 void	render_map(t_map *game)
 {
-	size_t y;
-	size_t x;
+	size_t	y;
+	size_t	x;
 
 	y = -1;
-	while (y++ < game->height)
+	while (++y < game->height)
 	{
 		x = -1;
-		while (x++ < game->width)
-		{
-			insert_wall(game, x, y);
-			insert_floor(game, x, y);
-		}
+		while (++x < game->width)
+			render_image(game, game->map[y][x], x, y);
 	}
+}
+
+void	render_image(t_map *game, char c, size_t x, size_t y)
+{
+	if (c == '0')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->floor, x * SIZE, y * SIZE);
+	else if (c == '1')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->wall, x * SIZE, y * SIZE);
+	else if (c == 'C')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->bucket, x * SIZE, y * SIZE);
+	else if (c == 'E')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->exit, x * SIZE, y * SIZE);
+	else if (c == 'P')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->player, game->player_pos.x * SIZE,
+			game->player_pos.y * SIZE);
 }
 
 void	render(t_map *game)
@@ -49,6 +83,8 @@ void	render(t_map *game)
 	open_window(game);
 	if (!game->win_ptr)
 		ft_kill(10, game);
+	create_sprites(game);
 	render_map(game);
+	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &key_press, game);
 	mlx_loop(game->mlx_ptr);
 }

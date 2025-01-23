@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:33:24 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/21 15:34:40 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:04:50 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,7 @@ void	init_game(t_map *game)
 	ft_memset(game, 0, sizeof(t_map));
 	ft_memset(&game->player, 0, sizeof(t_point));
 	ft_memset(&game->exit, 0, sizeof(t_point));
-	ft_memset(&game->tile, 0, sizeof(t_point));
 	ft_memset(&game->image, 0, sizeof(t_image));
-}
-
-void	init_image(t_map *game)
-{
-	game->mlx_ptr = mlx_init();
-	game->tile.x = SIZE;
-	game->tile.y = SIZE;
 }
 
 t_map	*init(void)
@@ -36,6 +28,6 @@ t_map	*init(void)
 	if (!game)
 		ft_kill(5, game);
 	init_game(game);
-	init_image(game);
+	game->mlx_ptr = mlx_init();
 	return (game);
 }

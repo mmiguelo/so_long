@@ -6,7 +6,7 @@
 /*   By: mmiguelo <mmiguelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 16:56:06 by mmiguelo          #+#    #+#             */
-/*   Updated: 2025/01/21 16:14:52 by mmiguelo         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:02:58 by mmiguelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ typedef struct s_map
 	char		**map;
 	int			exit_check;
 	int			movement;
-	t_point		player;
-	t_point		exit;
-	t_point		tile;
+	void		*player;
+	t_point		player_pos;
+	void		*exit;
+	void		*floor;
+	void		*bucket;
+	void		*wall;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_image		image;
@@ -109,21 +112,21 @@ void	ft_flood_fill(char **duplicate, t_map *game, size_t x, size_t y);
 
 void	render(t_map *game);
 void	open_window(t_map *game);
-void	render_image(t_map *game, char *xpm, int x, int y);
-void	insert_wall(t_map *game, int x, int y);
-void	insert_floor(t_map *game, int x, int y);
-/* void	render_map(t_map *game);
-void	render_player(t_map *game);
-void	render_collectibles(t_map *game);
-void	render_exit(t_map *game); */
+void	create_sprites(t_map *game);
+void	render_map(t_map *game);
+void	render_image(t_map *game, char c, size_t x, size_t y);
 
 /*=============================================================================#
 #                               MOVEMENTS                                      #
 #=============================================================================*/
 
+int		key_press(int key, t_map *game);
+void	validate_move_up_down(int key, t_map *game);
+void	validate_move_left_right(int key, t_map *game);
 void	move_up(t_map *game);
 void	move_down(t_map *game);
 void	move_left(t_map *game);
 void	move_right(t_map *game);
+void	check_win(t_map *game);
 
 #endif
